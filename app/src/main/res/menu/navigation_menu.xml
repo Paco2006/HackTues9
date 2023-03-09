@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuProfile"
+        android:icon="@drawable/profilepic"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/menuCheck_Site_Safety"
+        android:icon="@drawable/safesite"
+        android:title="Check site safety"/>
+
+    <item
+        android:id="@+id/menuPassword_Saver_Generator"
+        android:icon="@drawable/passwords"
+        android:title="Password Saver and Generator"/>
+
+    <item
+        android:id="@+id/menuAbout_Cyber_Sec"
+        android:icon="@drawable/cybersec"
+        android:title="About Cybersecurity"/>
+
+    <item
+        android:id="@+id/menuWhy_Use_Our_App"
+        android:icon="@drawable/whyus"
+        android:title="Why use our app"/>
+
+    <item
+        android:id="@+id/menuAbout_Us"
+        android:icon="@drawable/weare"
+        android:title="About us"/>
+
+    <item
+        android:id="@+id/menuSettings"
+        android:icon="@drawable/settings"
+        android:title="Settings"/>
+
+</menu>
