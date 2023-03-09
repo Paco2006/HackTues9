@@ -13,10 +13,11 @@
         android:layout_height="56dp"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="48dp"
+        android:background="@drawable/design"
         android:ems="10"
         android:gravity="center"
-        android:inputType="textPersonName"
-        android:hint="URL" />
+        android:hint="URL"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button"
