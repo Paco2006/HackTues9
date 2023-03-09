@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutCyberSec"
+    android:padding="25dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What is cybersecurity?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:id="@+id/cybersecHead1">
+
+            </TextView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_below="@id/cybersecHead1"
+                android:layout_marginTop="15dp"
+                android:text="@string/what_is_cybersec"
+                android:id="@+id/whatIsCybersec">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Why is cybersecurity so important?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:id="@+id/cybersecHead2"
+                android:layout_below="@id/whatIsCybersec">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_below="@id/cybersecHead2"
+                android:layout_marginTop="15dp"
+                android:text="@string/why_is_cybersec_important"
+                android:id="@+id/whyIsCybersecImportant">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="What are the benefits of cybersecurity?"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:id="@+id/cybersecHead3"
+                android:layout_below="@id/whyIsCybersecImportant">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:layout_below="@id/cybersecHead3"
+                android:layout_marginTop="15dp"
+                android:text="@string/benefits_of_cybersec"
+                android:id="@+id/benefitsOfCybersec">
+
+            </TextView>
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>
