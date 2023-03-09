@@ -95,6 +95,7 @@ public class PasswordSaverMasterPassFrag extends Fragment {
         else
         {
             Toast.makeText(getContext(), "Wrong Password!", Toast.LENGTH_SHORT).show();
+
         }
     }
 }

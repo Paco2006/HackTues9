@@ -1,5 +1,8 @@
 package janes.romanes.hacktuesapp;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,7 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -53,6 +59,7 @@ public class SavedPasswordsFrag extends Fragment {
 
     public static ArrayList<User> users = new ArrayList<>();
     private Button addPasswordBtn;
+    private ListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,21 @@ public class SavedPasswordsFrag extends Fragment {
         }
 
         addPasswordBtn = getView().findViewById(R.id.btnEnter);
+        listView = getView().findViewById(R.id.listView);
+
+        ArrayAdapter<User> usersAdapter = new ArrayAdapter<>(
+            this.getContext(),
+            android.R.layout.simple_list_item_1,
+            users
+        );
+
+        listView.setAdapter(usersAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                copyPasswordToClipboard(users.get(i).getPassword());
+            }
+        });
 
         addPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,5 +106,12 @@ public class SavedPasswordsFrag extends Fragment {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment_container_view, fm.findFragmentByTag("PasswordsGeneratorFrag"));
+    }
+
+    private void copyPasswordToClipboard(String password)
+    {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData data = ClipData.newPlainText("password", password);
+        clipboard.setPrimaryClip(data);
     }
 }

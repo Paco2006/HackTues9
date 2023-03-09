@@ -104,6 +104,7 @@ public class PasswordGeneratorFrag extends Fragment {
         if(size <= 0)
         {
             // Send toast msg
+            return null;
         }
 
         for(int i = 0; i < size; i++)
