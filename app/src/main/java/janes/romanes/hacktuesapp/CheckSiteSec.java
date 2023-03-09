@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class CheckSiteSec extends Fragment {
 
@@ -35,6 +36,8 @@ public class CheckSiteSec extends Fragment {
     }
 
     private Button scanBtn;
+    String secure = "The website is secure";
+    String insecure = "The website isn't secure";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +60,18 @@ public class CheckSiteSec extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_check_site_sec, container, false);
     }
-    public void searchURL(View v){
-        EditText text = getView().findViewById(R.id.button);
+    public void searchURL() {
+        EditText text = getView().findViewById(R.id.search);
+        String input = text.getText().toString();
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) == '/') {
+                ((TextView)getView().findViewById(R.id.output)).setText(insecure);
+                break;
+            }
+            if (input.charAt(i) == 's') {
+                ((TextView)getView().findViewById(R.id.output)).setText(secure);
+                break;
+            }
+        }
     }
-
-
 }
