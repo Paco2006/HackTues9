@@ -42,6 +42,14 @@
 
         </LinearLayout>
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="janes.romanes.hacktuesapp.AboutCyberSecFrag"
+            android:tag="my_tag">
+        </androidx.fragment.app.FragmentContainerView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
