@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/mainPage">
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="janes.romanes.hacktuesapp.MainPage"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" />
+    <fragment
+        android:id="@+id/checkSiteSec"
+        android:name="janes.romanes.hacktuesapp.CheckSiteSec"
+        android:label="fragment_check_site_sec"
+        tools:layout="@layout/fragment_check_site_sec" />
+    <fragment
+        android:id="@+id/aboutCyberSecFrag"
+        android:name="janes.romanes.hacktuesapp.AboutCyberSecFrag"
+        android:label="fragment_about_cyber_sec"
+        tools:layout="@layout/fragment_about_cyber_sec" />
+    <fragment
+        android:id="@+id/whyUseOurAppFrag"
+        android:name="janes.romanes.hacktuesapp.WhyUseOurAppFrag"
+        android:label="fragment_why_use_our_app"
+        tools:layout="@layout/fragment_why_use_our_app" />
+</navigation>

@@ -43,11 +43,14 @@
         </LinearLayout>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container_view"
+            android:id="@+id/nav_host_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="janes.romanes.hacktuesapp.AboutCyberSecFrag"
-            android:tag="my_tag">
+            android:name="janes.romanes.hacktuesapp.MainPage"
+            android:tag="my_tag"
+            app:navGraph="@navigation/main"
+            app:defaultNavHost="true"
+            tools:layout="@layout/fragment_main_page">
         </androidx.fragment.app.FragmentContainerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
