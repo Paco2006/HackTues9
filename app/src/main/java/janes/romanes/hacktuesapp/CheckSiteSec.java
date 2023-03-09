@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class CheckSiteSec extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -36,8 +40,10 @@ public class CheckSiteSec extends Fragment {
     }
 
     private Button scanBtn;
-    String secure = "The website is secure";
-    String insecure = "The website isn't secure";
+    String secure = "The website is secure  ✅";
+    String insecure = "⚠️The website isn't secure  ⚠️";
+    String error = "This website can't be reached!";
+    String existence = "The URL does not exist ❌";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +53,14 @@ public class CheckSiteSec extends Fragment {
         }
 
         scanBtn = getView().findViewById(R.id.button);
-
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchURL();
+                try {
+                    searchURL();
+                } catch (IOException e) {
+                    ((TextView) getView().findViewById(R.id.output)).setText(error);
+                }
             }
         });
     }
@@ -60,18 +69,30 @@ public class CheckSiteSec extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_check_site_sec, container, false);
     }
-    public void searchURL() {
+    public void searchURL() throws IOException {
         EditText text = getView().findViewById(R.id.search);
         String input = text.getText().toString();
-        for (int i = 0; i < input.length(); i++) {
-            if (input.charAt(i) == '/') {
-                ((TextView)getView().findViewById(R.id.output)).setText(insecure);
-                break;
-            }
-            if (input.charAt(i) == 's') {
-                ((TextView)getView().findViewById(R.id.output)).setText(secure);
-                break;
-            }
+        URL url;
+        HttpURLConnection huc = null;
+        try {
+            url = new URL(input);
+            huc = (HttpURLConnection) url.openConnection();
+        } catch (IOException e) {
+            ((TextView) getView().findViewById(R.id.output)).setText(error);
         }
+        int responseCode = huc.getResponseCode();
+        if(responseCode!=404){
+            for (int i = 0; i < input.length(); i++) {
+                if (input.charAt(i) == ':') {
+                    ((TextView) getView().findViewById(R.id.output)).setText(insecure);
+                    break;
+                }
+                if (input.charAt(i) == 's') {
+                    ((TextView) getView().findViewById(R.id.output)).setText(secure);
+                    break;
+                }
+            }
+        }else ((TextView) getView().findViewById(R.id.output)).setText(existence);
+
     }
 }

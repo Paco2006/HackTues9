@@ -16,7 +16,7 @@
         android:background="@drawable/design"
         android:ems="10"
         android:gravity="center"
-        android:hint="URL"
+        android:hint="Paste URL"
         android:inputType="textPersonName" />
 
     <Button
