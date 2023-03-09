@@ -11,6 +11,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import android.os.Bundle;
 import android.view.View;
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.navigationView);
         navigationView.setItemIconTintList(null);
 
-        NavController navController = findNavController(this, R.id.nav_host_fragment_container);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.my_nav_host_fragment);
+        NavController navController = findNavController(this, R.id.my_nav_host_fragment);
+//        NavController navController = navHostFragment.getNavController();
         setupWithNavController(navigationView, navController);
 
         TextView textTitle = findViewById(R.id.textTitle);
