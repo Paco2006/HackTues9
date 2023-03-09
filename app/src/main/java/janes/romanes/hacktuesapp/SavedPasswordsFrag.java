@@ -105,7 +105,7 @@ public class SavedPasswordsFrag extends Fragment {
     {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_container_view, fm.findFragmentByTag("PasswordsGeneratorFrag"));
+        ft.replace(R.id.fragmentSavedPasswords, fm.findFragmentById(R.id.fragmentPasswordGenerator));
     }
 
     private void copyPasswordToClipboard(String password)

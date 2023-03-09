@@ -121,6 +121,6 @@ public class PasswordGeneratorFrag extends Fragment {
         // Return to fragment with saved passwords
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_container_view, fm.findFragmentByTag("SavedPasswordsFrag"));
+        ft.replace(R.id.fragmentPasswordGenerator, fm.findFragmentById(R.id.fragmentSavedPasswords));
     }
 }

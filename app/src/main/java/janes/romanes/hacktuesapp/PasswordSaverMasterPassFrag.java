@@ -90,7 +90,7 @@ public class PasswordSaverMasterPassFrag extends Fragment {
             // Go to saved passwords
             FragmentManager fm = getActivity().getSupportFragmentManager();
             FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_container_view, fm.findFragmentByTag("SavedPasswordsFrag"));
+            ft.replace(R.id.fragmentPasswordSaverMaster, fm.findFragmentById(R.id.fragmentSavedPasswords));
         }
         else
         {
