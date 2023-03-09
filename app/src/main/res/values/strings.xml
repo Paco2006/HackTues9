@@ -28,5 +28,7 @@
     </string>
 
     <string name="why_use_our_app">Our app is a useful tool which helps users to combat common threats. We combine 2 features - a site safety checker and a password generator/saver. This makes it perfect for people who don\'t want to download a lot of apps. The site safety feature makes it possible to ensure that browsing sites doesn\'t compromise your data and security. It tells you if the site is dangerous or not and why it is unsafe to access it. The password generator and saver is a crutial feature to have because using the same password on two or more websites increases the chances of your accounts being stolen. That\'s why you should use it - to ensure your data is going to be safe. Also the password generator makes it possible to save as much passwords as possible which doesn\'t only help you stay safe but also doesn\'t make you remember all of your information which is easy to forget. </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

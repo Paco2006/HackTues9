@@ -12,12 +12,6 @@
         android:theme="@style/Theme.HackTuesApp"
         tools:targetApi="31">
         <activity
-            android:name=".WhyUseOurApp"
-            android:exported="false" />
-        <activity
-            android:name=".AboutCyberSec"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
