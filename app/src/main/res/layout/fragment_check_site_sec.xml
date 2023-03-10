@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/search"
             android:layout_width="279dp"
             android:layout_height="56dp"
             android:layout_marginLeft="65dp"
@@ -41,9 +42,8 @@
     <LinearLayout
         android:id="@+id/linear_layout_down"
         android:layout_width="match_parent"
-        android:layout_height="451dp"
+        android:layout_height="376dp"
         android:layout_gravity="bottom"
-        android:background="@drawable/layout_gradient"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -64,7 +64,9 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:gravity="center" />
+            android:background="@drawable/design"
+            android:gravity="center"
+            android:hint="..." />
     </LinearLayout>
 
 </FrameLayout>
