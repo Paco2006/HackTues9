@@ -69,6 +69,7 @@ public class CheckSiteSec extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_check_site_sec, container, false);
     }
+
     public void searchURL() throws IOException {
         EditText text = getView().findViewById(R.id.search);
         String input = text.getText().toString();
@@ -93,6 +94,5 @@ public class CheckSiteSec extends Fragment {
                 }
             }
         }else ((TextView) getView().findViewById(R.id.output)).setText(existence);
-
     }
 }

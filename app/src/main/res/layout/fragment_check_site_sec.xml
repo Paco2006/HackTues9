@@ -11,7 +11,7 @@
         android:id="@+id/search"
         android:layout_width="279dp"
         android:layout_height="56dp"
-        android:layout_marginLeft="65dp"
+        android:layout_marginStart="65dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/design"
         android:ems="10"
@@ -23,7 +23,7 @@
         android:id="@+id/button"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="120dp"
         android:text="Scan" />
 
@@ -31,7 +31,7 @@
         android:id="@+id/output"
         android:layout_width="143dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="135dp"
+        android:layout_marginStart="135dp"
         android:layout_marginTop="240dp"
         android:gravity="center"
         android:text="TextView"
