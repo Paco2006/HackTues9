@@ -1,5 +1,6 @@
 package janes.romanes.hacktuesapp;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -16,8 +17,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import janes.romanes.hacktuesapp.PasswordGeneratorFrag;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,22 +73,38 @@ public class SavedPasswordsFrag extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        addPasswordBtn = getView().findViewById(R.id.btnEnter);
-        listView = getView().findViewById(R.id.listView);
 
-        ArrayAdapter<User> usersAdapter = new ArrayAdapter<>(
-            this.getContext(),
-            android.R.layout.simple_list_item_1,
-            users
+    }
+
+    Activity activity;
+    View parentHolder;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        activity = getActivity();
+        parentHolder = inflater.inflate(R.layout.fragment_saved_passwords, container, false);
+
+        addPasswordBtn = parentHolder.findViewById(R.id.addPasswordBtn);
+        listView = parentHolder.findViewById(R.id.listView);
+
+        UsersAdapter usersAdapter = new UsersAdapter(
+                this.getContext(),
+                users
         );
 
-        listView.setAdapter(usersAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                copyPasswordToClipboard(users.get(i).getPassword());
-            }
-        });
+        if(!users.isEmpty())
+        {
+            listView.setAdapter(usersAdapter);
+            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    copyPasswordToClipboard(users.get(i).getPassword());
+                    return false;
+                }
+            });
+        }
 
         addPasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,26 +112,22 @@ public class SavedPasswordsFrag extends Fragment {
                 addPassword();
             }
         });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved_passwords, container, false);
+        return parentHolder;
     }
 
     private void addPassword()
     {
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragmentSavedPasswords, fm.findFragmentById(R.id.fragmentPasswordGenerator));
+        // Go to password generator
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.drawerLayout, new PasswordGeneratorFrag()).commit();
     }
 
     private void copyPasswordToClipboard(String password)
     {
-        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipboardManager clipboard = (ClipboardManager) activity.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData data = ClipData.newPlainText("password", password);
         clipboard.setPrimaryClip(data);
+        Toast.makeText(activity, "Copied Password Clipboard", Toast.LENGTH_SHORT).show();
     }
 }

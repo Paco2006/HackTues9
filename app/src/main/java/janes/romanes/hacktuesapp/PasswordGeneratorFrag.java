@@ -1,5 +1,6 @@
 package janes.romanes.hacktuesapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -63,17 +64,32 @@ public class PasswordGeneratorFrag extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        usernameEditText = getView().findViewById(R.id.usernameEditText);
-        passwordEditText = getView().findViewById(R.id.passwordEditText);
-        regeneratePassBtn = getView().findViewById(R.id.regeneratePassBtn);
-        savePassBtn = getView().findViewById(R.id.savePassBtn);
+
+
+
+    }
+
+    Activity activity;
+    View parentHolder;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        activity = getActivity();
+        parentHolder = inflater.inflate(R.layout.fragment_password_generator, container, false);
+
+        usernameEditText = parentHolder.findViewById(R.id.usernameEditText);
+        passwordEditText = parentHolder.findViewById(R.id.passwordEditText);
+        regeneratePassBtn = parentHolder.findViewById(R.id.regeneratePassBtn);
+        savePassBtn = parentHolder.findViewById(R.id.savePassBtn);
 
         passwordEditText.setText(generatePassword(16));
 
         regeneratePassBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                generatePassword(16);
+                passwordEditText.setText(generatePassword(16));
             }
         });
 
@@ -84,14 +100,7 @@ public class PasswordGeneratorFrag extends Fragment {
             }
         });
 
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_password_generator, container, false);
+        return parentHolder;
     }
 
     private String generatePassword(int size)
@@ -119,8 +128,7 @@ public class PasswordGeneratorFrag extends Fragment {
     {
         SavedPasswordsFrag.users.add(new User(username, password));
         // Return to fragment with saved passwords
-        FragmentManager fm = getActivity().getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragmentPasswordGenerator, fm.findFragmentById(R.id.fragmentSavedPasswords));
+        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+        ft.replace(R.id.drawerLayout, new SavedPasswordsFrag()).commit();
     }
 }

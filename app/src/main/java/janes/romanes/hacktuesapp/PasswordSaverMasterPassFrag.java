@@ -1,5 +1,6 @@
 package janes.romanes.hacktuesapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import janes.romanes.hacktuesapp.SavedPasswordsFrag;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,10 +55,7 @@ public class PasswordSaverMasterPassFrag extends Fragment {
         return fragment;
     }
 
-    private Button btnEnter, btnChangePass;
-    private EditText passwordInput;
 
-    public static String masterPass = "1234";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,9 +65,27 @@ public class PasswordSaverMasterPassFrag extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        btnEnter = getView().findViewById(R.id.btnEnter);
-        btnChangePass = getView().findViewById(R.id.btnChangePass);
-        passwordInput = getView().findViewById(R.id.passwordInput);
+
+    }
+
+    private Button btnEnter, btnChangePass;
+    private EditText passwordInput;
+
+    public static String masterPass = "1234";
+
+
+    Activity activity;
+    View parentHolder;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+
+        activity = getActivity();
+        parentHolder = inflater.inflate(R.layout.fragment_password_saver_master_pass, container, false);
+
+        btnEnter = parentHolder.findViewById(R.id.btnEnter);
+        btnChangePass = parentHolder.findViewById(R.id.btnChangePass);
+        passwordInput = parentHolder.findViewById(R.id.passwordInput);
 
 
         btnEnter.setOnClickListener(new View.OnClickListener() {
@@ -83,23 +101,18 @@ public class PasswordSaverMasterPassFrag extends Fragment {
 
             }
         });
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_password_saver_master_pass, container, false);
+        return parentHolder;
     }
 
     private void enterPassword(String pass)
     {
-        if(pass == masterPass)
+        if(pass.compareTo(masterPass) == 0)
         {
-            // Go to saved passwords
-            FragmentManager fm = getActivity().getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragmentPasswordSaverMaster, fm.findFragmentById(R.id.fragmentSavedPasswords));
+            // Go to saved passwords fragment
+            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
+            ft.replace(R.id.drawerLayout, new SavedPasswordsFrag()).commit();
+
         }
         else
         {
