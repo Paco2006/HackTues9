@@ -52,10 +52,10 @@ public class PasswordSaverMasterPassFrag extends Fragment {
         return fragment;
     }
 
-    private Button btnEnter;
+    private Button btnEnter, btnChangePass;
     private EditText passwordInput;
 
-    private String masterPass = "1234";
+    public static String masterPass = "1234";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,12 +66,21 @@ public class PasswordSaverMasterPassFrag extends Fragment {
         }
 
         btnEnter = getView().findViewById(R.id.btnEnter);
+        btnChangePass = getView().findViewById(R.id.btnChangePass);
         passwordInput = getView().findViewById(R.id.passwordInput);
+
 
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 enterPassword(passwordInput.getText().toString());
+            }
+        });
+
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
@@ -97,5 +106,10 @@ public class PasswordSaverMasterPassFrag extends Fragment {
             Toast.makeText(getContext(), "Wrong Password!", Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    private void changeMasterPassword()
+    {
+        // Go to another activity and change the master pass
     }
 }
