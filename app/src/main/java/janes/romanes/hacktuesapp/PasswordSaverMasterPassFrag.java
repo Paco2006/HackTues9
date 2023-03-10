@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -109,10 +110,7 @@ public class PasswordSaverMasterPassFrag extends Fragment {
     {
         if(pass.compareTo(masterPass) == 0)
         {
-            // Go to saved passwords fragment
-            FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-            ft.replace(R.id.drawerLayout, new SavedPasswordsFrag()).commit();
-
+            Navigation.findNavController(getView()).navigate(R.id.toPassSavNot);
         }
         else
         {

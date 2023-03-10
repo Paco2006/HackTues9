@@ -56,16 +56,30 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId())
                 {
+
+                    case R.id.menuCheck_Site_Safety:
+                        navController.navigate(R.id.toCheckSiteSafety);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuPassword_Saver_Generator:
+                        navController.navigate(R.id.toPassSavGen);
+                        drawerLayout.close();
+                        break;
+
                     case R.id.menuAbout_Cyber_Sec:
                         navController.navigate(R.id.toCyberSec);
+                        drawerLayout.close();
                         break;
 
                         case R.id.menuWhy_Use_Our_App:
                         navController.navigate(R.id.toWhyUseOurApp);
+                        drawerLayout.close();
                         break;
 
                     case R.id.menuMenu:
                         navController.navigate(R.id.toMainPage);
+                        drawerLayout.close();
                         break;
 
                     default:

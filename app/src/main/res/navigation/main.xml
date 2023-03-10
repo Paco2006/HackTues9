@@ -5,12 +5,35 @@
     android:id="@+id/main"
     app:startDestination="@id/mainPage">
 
-    <fragment
-        android:id="@+id/mainPage"
-        android:name="janes.romanes.hacktuesapp.MainPage"
-        android:label="Main Page"
-        tools:layout="@layout/fragment_main_page"
-        android:background="@color/white"/>
+    <action
+        android:id="@+id/toMainPage"
+        app:destination="@id/mainPage"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toCheckSiteSafety"
+        app:destination="@id/menuCheck_Site_Safety"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toPassSavGen"
+        app:destination="@id/menuPassword_Saver_Generator"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toPassSavNot"
+        app:destination="@id/savedPasswordsFrag"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toPassGen"
+        app:destination="@id/PassGen"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toPassSavNotAgain"
+        app:destination="@id/savedPasswordsFrag"
+        app:popUpTo="@id/mainPage"/>
 
     <action
         android:id="@+id/toCyberSec"
@@ -22,16 +45,36 @@
         app:destination="@id/menuWhy_Use_Our_App"
         app:popUpTo="@id/mainPage"/>
 
-    <action
-        android:id="@+id/toMainPage"
-        app:destination="@id/mainPage"
-        app:popUpTo="@id/mainPage"/>
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="janes.romanes.hacktuesapp.MainPage"
+        android:label="Main Page"
+        tools:layout="@layout/fragment_main_page"
+        android:background="@color/white"/>
 
     <fragment
         android:id="@+id/menuCheck_Site_Safety"
         android:name="janes.romanes.hacktuesapp.CheckSiteSec"
-        android:label="Check site safety"
+        android:label="Check Site Safety"
         tools:layout="@layout/fragment_check_site_sec" />
+
+    <fragment
+        android:id="@+id/menuPassword_Saver_Generator"
+        android:name="janes.romanes.hacktuesapp.PasswordSaverMasterPassFrag"
+        android:label="Password Saver and Generator"
+        tools:layout="@layout/fragment_password_saver_master_pass" />
+
+    <fragment
+        android:id="@+id/savedPasswordsFrag"
+        android:name="janes.romanes.hacktuesapp.SavedPasswordsFrag"
+        android:label="Your Saved Passwords"
+        tools:layout="@layout/fragment_saved_passwords" />
+
+    <fragment
+        android:id="@+id/PassGen"
+        android:name="janes.romanes.hacktuesapp.PasswordGeneratorFrag"
+        android:label="Generate a Password For Your Account"
+        tools:layout="@layout/fragment_password_generator" />
 
     <fragment
         android:id="@+id/menuAbout_Cyber_Sec"
@@ -42,6 +85,7 @@
     <fragment
         android:id="@+id/menuWhy_Use_Our_App"
         android:name="janes.romanes.hacktuesapp.WhyUseOurAppFrag"
-        android:label="Why use our app"
+        android:label="Why Use Our App"
         tools:layout="@layout/fragment_why_use_our_app" />
+
 </navigation>

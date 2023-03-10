@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -118,9 +119,7 @@ public class SavedPasswordsFrag extends Fragment {
 
     private void addPassword()
     {
-        // Go to password generator
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.drawerLayout, new PasswordGeneratorFrag()).commit();
+        Navigation.findNavController(getView()).navigate(R.id.toPassGen);
     }
 
     private void copyPasswordToClipboard(String password)

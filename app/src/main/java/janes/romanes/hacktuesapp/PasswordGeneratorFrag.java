@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,10 +64,6 @@ public class PasswordGeneratorFrag extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
-
-
     }
 
     Activity activity;
@@ -106,7 +103,7 @@ public class PasswordGeneratorFrag extends Fragment {
     private String generatePassword(int size)
     {
         String str = "";
-        String setOfChars = "abcdefghijklmnopqrstuvwxyz1234567890-/@&*"; // This variable can be modified with added checkboxes
+        String setOfChars = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+{}|:';[]/*-+.,"; // This variable can be modified with added checkboxes
 
         Random rand = new Random();
 
@@ -127,8 +124,6 @@ public class PasswordGeneratorFrag extends Fragment {
     private void saveUser(String username, String password)
     {
         SavedPasswordsFrag.users.add(new User(username, password));
-        // Return to fragment with saved passwords
-        FragmentTransaction ft = getParentFragmentManager().beginTransaction();
-        ft.replace(R.id.drawerLayout, new SavedPasswordsFrag()).commit();
+        Navigation.findNavController(getView()).navigate(R.id.toPassSavNotAgain);
     }
 }
