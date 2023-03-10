@@ -49,13 +49,6 @@
             android:layout_height="match_parent"
             app:navGraph="@navigation/main" />
 
-        <fragment
-            android:id="@+id/my_fragment"
-            android:name="janes.romanes.hacktuesapp.MainPage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/fragment_main_page" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
