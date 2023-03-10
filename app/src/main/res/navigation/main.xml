@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/mainPage">
+
+    <fragment
+        android:id="@+id/mainPage"
+        android:name="janes.romanes.hacktuesapp.MainPage"
+        android:label="Main Page"
+        tools:layout="@layout/fragment_main_page"
+        android:background="@color/white"/>
+
+    <action
+        android:id="@+id/toCyberSec"
+        app:destination="@id/menuAbout_Cyber_Sec"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toWhyUseOurApp"
+        app:destination="@id/menuWhy_Use_Our_App"
+        app:popUpTo="@id/mainPage"/>
+
+    <action
+        android:id="@+id/toMainPage"
+        app:destination="@id/mainPage"
+        app:popUpTo="@id/mainPage"/>
+
+    <fragment
+        android:id="@+id/menuCheck_Site_Safety"
+        android:name="janes.romanes.hacktuesapp.CheckSiteSec"
+        android:label="Check site safety"
+        tools:layout="@layout/fragment_check_site_sec" />
+
+    <fragment
+        android:id="@+id/menuAbout_Cyber_Sec"
+        android:name="janes.romanes.hacktuesapp.AboutCyberSecFrag"
+        android:label="About Cybersecurity"
+        tools:layout="@layout/fragment_about_cyber_sec" />
+
+    <fragment
+        android:id="@+id/menuWhy_Use_Our_App"
+        android:name="janes.romanes.hacktuesapp.WhyUseOurAppFrag"
+        android:label="Why use our app"
+        tools:layout="@layout/fragment_why_use_our_app" />
+</navigation>

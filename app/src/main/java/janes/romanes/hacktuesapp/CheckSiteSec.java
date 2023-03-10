@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AboutCyberSecFrag#newInstance} factory method to
+ * Use the {@link CheckSiteSec#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class CheckSiteSec extends Fragment {
@@ -34,7 +34,7 @@ public class CheckSiteSec extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AboutCyberSecFrag.
+     * @return A new instance of fragment CheckSiteSec.
      */
     // TODO: Rename and change types and number of parameters
     public static CheckSiteSec newInstance(String param1, String param2) {
@@ -59,6 +59,6 @@ public class CheckSiteSec extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_check_site_sec, container, false);
+        return inflater.inflate(R.layout.fragment_about_cyber_sec, container, false);
     }
 }
