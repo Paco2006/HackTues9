@@ -10,9 +10,9 @@
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" />
     <fragment
-        android:id="@+id/checkSiteSec"
+        android:id="@+id/menuCheck_Site_Safety"
         android:name="janes.romanes.hacktuesapp.CheckSiteSec"
-        android:label="fragment_check_site_sec"
+        android:label="Check site safety"
         tools:layout="@layout/fragment_check_site_sec" />
     <fragment
         android:id="@+id/aboutCyberSecFrag"

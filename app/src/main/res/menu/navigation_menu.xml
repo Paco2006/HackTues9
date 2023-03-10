@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menuMenu"
+        android:icon="@drawable/menupic"
+        android:orderInCategory="100"
+        android:title="Menu"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/menuProfile"
         android:icon="@drawable/profilepic"
         android:orderInCategory="100"
