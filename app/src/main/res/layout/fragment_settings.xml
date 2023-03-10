@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="top|start"
+    android:background="@drawable/layout_main_background"
     tools:context=".Settings">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,34 +13,63 @@
         android:layout_height="match_parent"
         android:background="@drawable/layout_main_background"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:gravity="start">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Settings"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-        <View
+        <LinearLayout
+            android:id="@+id/layout_setting"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_height="?actionBarSize"
+            android:background="@color/purple_500"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Switch"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            <ImageView
+                android:id="@+id/ImageMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/icon_menu"
+                app:tint="@color/white" />
 
-        <Switch
-            android:id="@+id/switch_dark_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="false"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:theme="@style/Theme.HackTuesApp" />
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:gravity="center"
+                android:text="Settings"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <Switch
+                android:id="@+id/switch_dark_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:theme="@style/Theme.HackTuesApp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
