@@ -8,21 +8,21 @@
     <string name="why_is_cybersec_important">   With an increasing number of users, devices and programs in the modern enterprise, combined with the increased deluge of data -- much of which is sensitive or confidential -- the importance of cybersecurity continues to grow. The growing volume and sophistication of cyber attackers and attack techniques compound the problem even further.
     </string>
 
-    <string name="benefits_of_cybersec">The benefits of implementing and maintaining cybersecurity practices include:
+    <string name="benefits_of_cybersec">The benefits of implementing and maintaining cybersecurity practices include:\n
 
-- Business protection against cyberattacks and data breaches.
+- Business protection against cyberattacks and data breaches.\n
 
-- Protection for data and networks.
+- Protection for data and networks.\n
 
-- Prevention of unauthorized user access.
+- Prevention of unauthorized user access.\n
 
-- Improved recovery time after a breach.
+- Improved recovery time after a breach.\n
 
-- Protection for end users and endpoint devices.
+- Protection for end users and endpoint devices.\n
 
-- Regulatory compliance.
+- Regulatory compliance.\n
 
-- Business continuity.
+- Business continuity.\n
 
 - Improved confidence in the company\'s reputation and trust for developers, partners, customers, stakeholders and employees.
     </string>
