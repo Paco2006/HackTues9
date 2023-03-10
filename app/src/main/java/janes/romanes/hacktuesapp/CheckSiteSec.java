@@ -1,5 +1,6 @@
 package janes.romanes.hacktuesapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class CheckSiteSec extends Fragment {
@@ -39,11 +39,11 @@ public class CheckSiteSec extends Fragment {
         return fragment;
     }
 
-    private Button scanBtn;
     String secure = "The website is secure  ✅";
     String insecure = "⚠️The website isn't secure  ⚠️";
-    String error = "This website can't be reached!";
     String existence = "The URL does not exist ❌";
+    String sslCheck = "Untrusted SSL certificate!!!";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,47 +52,64 @@ public class CheckSiteSec extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        scanBtn = getView().findViewById(R.id.button);
+
+    }
+
+    Activity activity;
+
+    View parentHolder;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        parentHolder = inflater.inflate(R.layout.fragment_check_site_sec, container, false);
+
+        Button scanBtn = parentHolder.findViewById(R.id.button);
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     searchURL();
                 } catch (IOException e) {
-                    ((TextView) getView().findViewById(R.id.output)).setText(error);
+                    ((TextView) parentHolder.findViewById(R.id.output)).setText(existence);
                 }
             }
         });
+
+        return parentHolder;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_check_site_sec, container, false);
-    }
-
-    public void searchURL() throws IOException {
-        EditText text = getView().findViewById(R.id.search);
-        String input = text.getText().toString();
-        URL url;
-        HttpURLConnection huc = null;
-        try {
-            url = new URL(input);
-            huc = (HttpURLConnection) url.openConnection();
-        } catch (IOException e) {
-            ((TextView) getView().findViewById(R.id.output)).setText(error);
+    public static boolean isValid(String url)
+    {
+        try
+        {
+            new URL(url).toURI();
+            return true;
         }
-        int responseCode = huc.getResponseCode();
-        if(responseCode!=404){
+        catch (Exception e)
+        {
+            return false;
+        }
+    }
+    public void searchURL() throws IOException {
+        EditText text = parentHolder.findViewById(R.id.search);
+        String input = text.getText().toString();
+        if(isValid(input)){
             for (int i = 0; i < input.length(); i++) {
                 if (input.charAt(i) == ':') {
-                    ((TextView) getView().findViewById(R.id.output)).setText(insecure);
+                    ((TextView) parentHolder.findViewById(R.id.output)).setText(insecure);
                     break;
                 }
                 if (input.charAt(i) == 's') {
-                    ((TextView) getView().findViewById(R.id.output)).setText(secure);
-                    break;
+                    if(SSLCertificateChecker.isCertificateTrustable(input)){
+                        ((TextView) parentHolder.findViewById(R.id.output)).setText(secure);
+                        break;
+                    }else{
+                        ((TextView) parentHolder.findViewById(R.id.output)).setText(insecure);
+                        ((TextView) parentHolder.findViewById(R.id.SSL)).setText(sslCheck);
+                        break;
+                    }
                 }
             }
-        }else ((TextView) getView().findViewById(R.id.output)).setText(existence);
+        }else ((TextView) parentHolder.findViewById(R.id.output)).setText(existence);
     }
 }
