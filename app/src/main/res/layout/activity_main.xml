@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <LinearLayout
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
@@ -42,14 +42,12 @@
 
         </LinearLayout>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragment_container_view"
+        <fragment
+            android:id="@+id/my_nav_host_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:name="janes.romanes.hacktuesapp.AboutCyberSecFrag"
-            android:tag="my_tag"
-            tools:layout="@layout/fragment_about_cyber_sec">
-        </androidx.fragment.app.FragmentContainerView>
+            app:navGraph="@navigation/main" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
