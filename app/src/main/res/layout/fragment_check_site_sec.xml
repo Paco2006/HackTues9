@@ -3,70 +3,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_main_background"
     tools:context=".CheckSiteSec">
-    <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
-        android:id="@+id/linear_layout_up"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="279dp"
-            android:layout_height="56dp"
-            android:layout_marginLeft="65dp"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/design"
-            android:drawableLeft="@drawable/add_link"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="URL"
-            android:inputType="textPersonName"
-            android:padding="10dp" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="130dp"
-            android:layout_marginTop="120dp"
-            android:background="@drawable/design"
-            android:text="Scan" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_layout_down"
-        android:layout_width="match_parent"
-        android:layout_height="376dp"
-        android:layout_gravity="bottom"
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="280dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/design"
+        android:ems="10"
         android:gravity="center"
-        android:orientation="vertical">
+        android:hint="Paste URL"
+        android:inputType="textPersonName" />
 
-        <TextView
-            android:id="@+id/output"
-            android:layout_width="143dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/design"
-            android:gravity="center"
-            android:hint="..."
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="150dp"
+        android:text="Scan" />
 
-        <TextView
-            android:id="@+id/SSL"
-            android:layout_width="143dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/design"
-            android:gravity="center"
-            android:hint="..." />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/output"
+        android:layout_width="143dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="240dp"
+        android:gravity="center"
+        android:hint="..."
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/SSL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="330dp"
+        android:layout_marginStart="135dp"
+        />
 </FrameLayout>

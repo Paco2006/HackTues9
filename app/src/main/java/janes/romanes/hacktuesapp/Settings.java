@@ -44,6 +44,7 @@ public class Settings extends Fragment {
 
     private void toggleTheme() {
         if (switchState) {
+
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);

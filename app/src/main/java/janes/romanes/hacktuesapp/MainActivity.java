@@ -69,6 +69,16 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.close();
                         break;
 
+                    case R.id.menuAbout_Us:
+                        navController.navigate(R.id.toAbouUs);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuSettings:
+                        navController.navigate(R.id.toSettings);
+                        drawerLayout.close();
+                        break;
+
                     case R.id.menuMenu:
                         navController.navigate(R.id.toMainPage);
                         drawerLayout.close();

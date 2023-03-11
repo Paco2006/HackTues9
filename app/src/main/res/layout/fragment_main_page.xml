@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/layout_main_background"
-    android:padding="25dp"
-    tools:context="MainPage">
+    tools:context="MainPage"
+    android:padding="25dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -18,15 +17,15 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/mainpagepr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Guardify is an easy to use android mobile app, that saves you both effort and time. "
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="Guardify is an easy to use android mobile app, that saves you both effort and time. "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold">
+                android:id="@+id/mainpagepr">
 
             </TextView>
 
