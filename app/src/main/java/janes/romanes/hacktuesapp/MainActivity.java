@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.menuCheck_Site_Safety:
                         navController.navigate(R.id.toCheckSiteSafety);
                         drawerLayout.close();
+
                         break;
 
                     case R.id.menuPassword_Saver_Generator:
