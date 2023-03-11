@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/design"
                 android:checked="false"
-                android:minWidth="48dp"
+                android:minWidth="150dp"
                 android:minHeight="48dp"
                 android:layout_marginTop="10dp"
                 android:theme="@style/Theme.HackTuesApp" />
