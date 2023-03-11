@@ -52,10 +52,6 @@ public class SSLCertificateChecker {
             HttpsURLConnection conn = (HttpsURLConnection) urlObj.openConnection();
             conn.setHostnameVerifier(HttpsURLConnection.getDefaultHostnameVerifier());
 
-//            conn.connect();
-//
-//            conn.disconnect();
-
             return true;
         } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
             return false;
