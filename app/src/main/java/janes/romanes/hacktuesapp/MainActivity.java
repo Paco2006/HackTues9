@@ -2,21 +2,12 @@ package janes.romanes.hacktuesapp;
 
 import static androidx.navigation.Navigation.findNavController;
 import static androidx.navigation.ui.NavigationUI.setupWithNavController;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+
             }
         });
 
@@ -72,8 +64,18 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.close();
                         break;
 
-                        case R.id.menuWhy_Use_Our_App:
+                    case R.id.menuWhy_Use_Our_App:
                         navController.navigate(R.id.toWhyUseOurApp);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuAbout_Us:
+                        navController.navigate(R.id.toAbouUs);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuSettings:
+                        navController.navigate(R.id.toSettings);
                         drawerLayout.close();
                         break;
 
