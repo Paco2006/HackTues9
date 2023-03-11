@@ -13,34 +13,7 @@
         android:orientation="vertical"
         android:gravity="start">
 
-        <LinearLayout
-            android:id="@+id/layout_setting"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/purple_500"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp"
-            >
 
-            <ImageView
-                android:id="@+id/ImageMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/icon_menu" />
-
-            <TextView
-                android:layout_width="300dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="18dp"
-                android:gravity="center"
-                android:text="Settings"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -50,6 +23,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Theme"
