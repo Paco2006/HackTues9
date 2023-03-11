@@ -1,64 +1,69 @@
 package janes.romanes.hacktuesapp;
 
-import java.io.IOException;
 import java.net.URL;
-import java.security.KeyManagementException;
-import java.security.NoSuchAlgorithmException;
+import java.net.URLConnection;
+import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
-import javax.net.ssl.HostnameVerifier;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 public class SSLCertificateChecker {
 
-    public static void disableCertificateValidation() throws KeyManagementException, NoSuchAlgorithmException {
-        TrustManager[] trustAllCerts = new TrustManager[] {
-                new X509TrustManager() {
-                    public X509Certificate[] getAcceptedIssuers() {
-                        return new X509Certificate[0];
-                    }
+    public static boolean isCertificateTrustable(String url) {
+        AtomicBoolean isSecure = new AtomicBoolean(false); // initialize to false
+        try {
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, new TrustManager[]{new X509TrustManager() {
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
 
-                    public void checkClientTrusted(X509Certificate[] certs, String authType) {
-                    }
+                public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                }
 
-                    public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                    try {
+                        for (X509Certificate cert : certs) {
+                            cert.checkValidity();
+                            verifyHostName(url, cert);
+                        }
+                        isSecure.set(true); // modify the value here
+                    } catch (Exception e) {
+                        isSecure.set(false);
                     }
                 }
-        };
+            }}, null);
 
-        SSLContext sslContext = SSLContext.getInstance("SSL");
-        sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-        HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
+            URLConnection urlConnection = new URL(url).openConnection();
+            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) urlConnection;
+            httpsURLConnection.setSSLSocketFactory(sslContext.getSocketFactory());
+            httpsURLConnection.connect();
 
-        HostnameVerifier verifier = new HostnameVerifier() {
-            @Override
-            public boolean verify(String hostname, SSLSession session) {
-                HostnameVerifier defaultVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-                return defaultVerifier.verify(hostname, session)
-                        && hostname.equals(session.getPeerHost());
+            Certificate[] serverCerts = httpsURLConnection.getServerCertificates();
+            for (Certificate cert : serverCerts) {
+                if (cert instanceof X509Certificate) {
+                    ((X509Certificate) cert).checkValidity();
+                    verifyHostName(url, (X509Certificate) cert);
+                    isSecure.set(true);
+                }
             }
-        };
-        HttpsURLConnection.setDefaultHostnameVerifier(verifier);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return isSecure.get();
     }
 
-    public static boolean isCertificateTrustable(String url) {
-        try {
-            disableCertificateValidation();
-
-            URL urlObj = new URL(url);
-            HttpsURLConnection conn = (HttpsURLConnection) urlObj.openConnection();
-            conn.setHostnameVerifier(HttpsURLConnection.getDefaultHostnameVerifier());
-
-//            conn.connect();
-//
-//            conn.disconnect();
-
-            return true;
-        } catch (IOException | NoSuchAlgorithmException | KeyManagementException e) {
-            return false;
+    private static void verifyHostName(String url, X509Certificate cert) throws SSLPeerUnverifiedException {
+        if (!url.equalsIgnoreCase(cert.getSubjectDN().getName())) {
+            throw new SSLPeerUnverifiedException("Certificate for " + cert.getSubjectDN().getName() +
+                    " does not match " + url);
         }
     }
 }

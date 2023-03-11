@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 public class CheckSiteSec extends Fragment {
 
@@ -51,8 +53,6 @@ public class CheckSiteSec extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     Activity activity;
@@ -77,7 +77,6 @@ public class CheckSiteSec extends Fragment {
 
         return parentHolder;
     }
-
     public static boolean isValid(String url)
     {
         try
@@ -93,21 +92,21 @@ public class CheckSiteSec extends Fragment {
     public void searchURL() throws IOException {
         EditText text = parentHolder.findViewById(R.id.search);
         String input = text.getText().toString();
+        ((TextView) parentHolder.findViewById(R.id.SSL)).setText(null);
         if(isValid(input)){
             for (int i = 0; i < input.length(); i++) {
-                if (input.charAt(i) == ':') {
+                if (input.startsWith("http:")) {
                     ((TextView) parentHolder.findViewById(R.id.output)).setText(insecure);
                     break;
                 }
-                if (input.charAt(i) == 's') {
-                    if(SSLCertificateChecker.isCertificateTrustable(input)){
+                if (input.startsWith("https")) {
+                    //if(SSLCertificateChecker.isCertificateTrustable(input)){
                         ((TextView) parentHolder.findViewById(R.id.output)).setText(secure);
-                        break;
-                    }else{
+                    /*}else{
                         ((TextView) parentHolder.findViewById(R.id.output)).setText(insecure);
                         ((TextView) parentHolder.findViewById(R.id.SSL)).setText(sslCheck);
-                        break;
                     }
+                    break;*/
                 }
             }
         }else ((TextView) parentHolder.findViewById(R.id.output)).setText(existence);
