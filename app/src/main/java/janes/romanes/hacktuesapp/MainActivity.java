@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 drawerLayout.openDrawer(GravityCompat.START);
+
             }
         });
 
@@ -65,6 +66,16 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.menuWhy_Use_Our_App:
                         navController.navigate(R.id.toWhyUseOurApp);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuAbout_Us:
+                        navController.navigate(R.id.toAbouUs);
+                        drawerLayout.close();
+                        break;
+
+                    case R.id.menuSettings:
+                        navController.navigate(R.id.toSettings);
                         drawerLayout.close();
                         break;
 
