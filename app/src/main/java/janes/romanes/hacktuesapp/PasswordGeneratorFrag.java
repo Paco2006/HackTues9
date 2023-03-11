@@ -125,7 +125,7 @@ public class PasswordGeneratorFrag extends Fragment {
                 .child(username)
                 .setValue(hashMap);
 
-        SavedPasswordsFrag.users.add(new User(username, password));
+        //SavedPasswordsFrag.users.add(new User(username, password));
         Navigation.findNavController(getView()).navigate(R.id.toPassSavNotAgain);
 
         }
