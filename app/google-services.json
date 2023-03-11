@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "276420275220",
+    "project_id": "usepassnotepad",
+    "storage_bucket": "usepassnotepad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276420275220:android:34ad14916bfc91b9c08b01",
+        "android_client_info": {
+          "package_name": "janes.romanes.hacktuesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "276420275220-crjlj8ejkab1l8jsqq1169rnpbr634e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB49vWXjN1qDqIz2S0RM8M7nslrniGKk7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "276420275220-crjlj8ejkab1l8jsqq1169rnpbr634e9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
